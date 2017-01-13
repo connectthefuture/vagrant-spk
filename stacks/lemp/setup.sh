@@ -34,6 +34,7 @@ sed --in-place='' \
 sed --in-place='' \
         --expression='s/^user\t\t= mysql/#user\t\t= mysql/' \
         --expression='s,^tmpdir\t\t= /tmp,tmpdir\t\t= /var/tmp,' \
+        --expression='/\[mysqld]/ a\ secure-file-priv = ""\' \
         /etc/mysql/my.cnf
 # patch mysql conf to use smaller transaction logs to save disk space
 cat <<EOF > /etc/mysql/conf.d/sandstorm.cnf
